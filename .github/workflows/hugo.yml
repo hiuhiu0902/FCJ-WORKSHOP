@@ -1,34 +1,60 @@
-name: Deploy Hugo site to GitHub Pages
+name: Deploy Hugo Site to GitHub Pages
 
 on:
+  # Chạy khi bạn push code lên nhánh 'main'
   push:
     branches:
-      - main
+      - main  # <-- Đổi thành 'master' nếu nhánh chính của bạn là 'master'
+      
+  # Cho phép bạn chạy workflow này thủ công từ tab Actions
+  workflow_dispatch:
 
+# Cấp quyền cho GITHUB_TOKEN để deploy
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Chỉ cho phép một lần deploy
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout source code
+      - name: 1. Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive  # Lấy cả theme nếu bạn dùng git submodules
 
-      - name: Setup Hugo
+      - name: 2. Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.134.3"
-          extended: true
+          hugo-version: 'latest'
+          # extended: true # Bỏ comment dòng này nếu bạn dùng Hugo bản extended (cho SASS/SCSS)
 
-      - name: Build website
-        run: hugo --minify
+      - name: 3. Cấu hình GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v4
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: 4. Build trang web
+        run: |
+          hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          
+      - name: 5. Tải lên artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages # <- đảm bảo đúng tên nhánh bạn dùng để deploy
-          force_orphan: true # <- đảm bảo xóa lịch sử cũ ở nhánh gh-pages (giảm lỗi)
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Phải chạy sau khi job 'build' hoàn thành
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
