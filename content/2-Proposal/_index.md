@@ -1,115 +1,148 @@
 ---
-title: "Proposal"
-date: "2025-09-09T19:53:52+07:00"
-weight: 2
+title: "BDP - Online Game Card Sales Platform"
+date: "2025-09-10T10:00:00+07:00"
+weight: 1
 chapter: false
-pre: " <b> 2. </b> "
+pre: " <b> 1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
+
+{{% notice info %}}
+Technical Proposal Document: A Highly Available and Secure E-commerce Platform (Game Card Sales).
 {{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
-
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+
+The Online Game Card Sales Platform is an e-commerce project aiming to build a complete website allowing users to register, log in, purchase, and instantly receive game card codes automatically.
+
+This solution is designed with a multi-tier architecture, prioritizing security and performance. By utilizing top-tier AWS services, we propose an **initial architecture deployed on two Availability Zones** to optimize costs, while outlining a future upgrade roadmap to three AZs to ensure maximum reliability.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+#### System-Side Problem (Security):
+The inventory of game card codes (unused) and transaction information is extremely sensitive data. Exposure or loss could lead to severe financial damage. Therefore, the database system must be protected at the highest level, inaccessible directly from the Internet.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+#### User-Side Problem (Experience & Trust):
+Gamers are a user group that demands speed. They need a reliable platform that responds quickly, is secure for payments, and delivers the code immediately after a successful transaction. Any delay or interruption will erode the platform's credibility.
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+We propose a "Well-Architected" framework deployed within a custom AWS VPC.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+---
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+#### 3.1. Current Architecture (Phase 1): 2 AZ + 1 NAT Gateway
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+To balance cost and availability, the initial architecture will be deployed across **2 Availability Zones (AZs)**.
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+![Phase 1 Architecture: 2 AZ + 1 NAT Gateway](/images/proposal/architecture-2az-1nat.png)
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+* **Edge Layer:** (Unchanged)
+    * Users access via **Amazon Route 53** -> **Amazon CloudFront (CDN)**.
+    * **AWS WAF** and **AWS Shield** are integrated with CloudFront to block attacks.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+* **Load Balancing Layer:**
+    * Valid requests are forwarded to an **Application Load Balancer (ALB)**.
+    * The ALB is placed in 2 Public Subnets, one in each AZ.
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+* **Application Tier:**
+    * Web/API servers (EC2) are placed in 2 Private Subnets (one per AZ).
+    * Servers are managed by an **Auto Scaling Group (ASG)**, ensuring at least 2 instances are running in 2 different AZs.
+    * Sensitive information (API keys, DB passwords) is retrieved from **AWS Secrets Manager**.
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+* **Data Tier:**
+    * **Amazon RDS (Database):** The Primary database is in a Private DB Subnet in AZ 1.
+    * **RDS Replica:** A synchronous Replica is placed in a Private DB Subnet in AZ 2 for Multi-AZ Failover.
+    * **Amazon ElastiCache (Caching):** A cache cluster (Redis) is deployed (potentially Multi-AZ) to reduce database load.
+    * **Amazon S3:** Stores images, logs.
 
-Total: $0.7/month, $8.40/12 months
+* **Networking & Monitoring Layer:**
+    * **NAT Gateway:** Only **01 single NAT Gateway** is created and placed in the Public Subnet of AZ 1.
+    * All Route Tables for *both* Private Subnets (in AZ 1 and AZ 2) will route Internet-bound traffic through this single NAT Gateway.
+    * **Bastion Host:** Placed in a Public Subnet (e.g., in AZ 1) for admin SSH access.
+    * **Amazon CloudWatch & VPC Flow Logs:** Monitor and log the entire system.
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+---
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+#### 3.2. Upgrade Roadmap (Phase 2): 3 AZ + 3 NAT Gateway
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+After the platform is stable and generating revenue, we can upgrade to a 3 AZ architecture for maximum reliability.
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+![Phase 2 Architecture: 3 AZ + 3 NAT Gateway](/images/proposal/architecture-3az-3nat.png)
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+* **Key Changes:**
+    1.  Expand the VPC to support **3 Availability Zones (AZs)**.
+    2.  Deploy **03 NAT Gateways**, one in a Public Subnet in each AZ.
+    3.  Update Route Tables: The Private Subnet in AZ 1 will use the NAT Gateway in AZ 1, the Private Subnet in AZ 2 will use the NAT in AZ 2, etc.
+
+* **Benefits After Upgrading:**
+    * **Eliminates Single Point of Failure (SPOF):** In the Phase 1 architecture, if the single NAT Gateway (or its AZ) fails, the entire system loses Internet access (cannot call payment APIs). The 3 NAT Gateway architecture ensures a failure in one AZ does not affect the other two.
+    * **Increases High Availability:** Achieves the highest level of fault tolerance recommended by AWS for critical systems.
+
+### 4. Expected Outcomes
+
+* **Technically:** A stable, operational E-commerce (MVP) platform that is fault-tolerant (2 AZ level) with a clear upgrade path to 3 AZs.
+* **User Experience:** Fast page load times, with a smooth and secure purchasing process.
+* **Security:** Sensitive data is protected within multiple private network layers.
+
+---
+
+### 5. Budget Estimation (Monthly Cost)
+
+A detailed cost analysis for both architectures.
+
+#### 5.1. Cost - Current Architecture (2 AZ + 1 NAT Gateway)
+
+* **Application Load Balancer (ALB):** ~$20.00 /month (fixed cost).
+* **NAT Gateway (1 Gateway):**
+    * Hourly cost: 1 * $0.045/hr * 730 hrs/mo = ~$32.85
+    * Data processing (Assuming 100GB): 100 * $0.045/GB = $4.50
+    * *Total NAT Gateway:* **~$37.35 /month**
+* **Amazon ElastiCache:** Min. 1 node `cache.t4g.micro` (Multi-AZ) = **~$17.00 /month**
+* **AWS WAF:** Basic cost (1 Web ACL + 10 Rules) = **~$10.00 /month**
+* **Services in Free Tier (Assuming first year):**
+    * **EC2 (App Server):** Free Tier provides 750 hrs `t2.micro` (or `t3.micro`). We need 2 servers (for 2 AZs), so 1 is free, 1 is paid.
+        * 1 x `t3.micro` (free) = $0.00
+        * 1 x `t3.micro` (~$0.0104/hr) = ~$7.60 /month
+    * **RDS (Database):** Free Tier provides 750 hrs `db.t2.micro` (Single-AZ). Our architecture is Multi-AZ (Primary + Replica).
+        * 1 x `db.t3.micro` (Primary) = ~$12.00 /month
+        * 1 x `db.t3.micro` (Replica) = ~$12.00 /month
+        * (Note: Free Tier cannot be used for RDS Multi-AZ)
+    * **CloudFront, S3, Secrets Manager:** Very low cost, under **~$1.00 /month** at initial usage.
+
+> **Total Estimated Cost (Phase 1):**
+> ~$20 (ALB) + ~$37.35 (NAT) + ~$17 (Cache) + ~$10 (WAF) + ~$7.60 (EC2) + ~$24 (RDS) + ~$1 (Other)
+> **= Approx. $115 - $120 USD /month**
+
+#### 5.2. Cost - Upgrade Architecture (3 AZ + 3 NAT Gateway)
+
+* **Application Load Balancer (ALB):** ~$20.00 /month (Unchanged).
+* **NAT Gateway (3 Gateways):**
+    * Hourly cost: 3 * $0.045/hr * 730 hrs/mo = ~$98.55
+    * Data processing (Assuming 100GB, split): 100 * $0.045/GB = $4.50
+    * *Total NAT Gateway:* **~$103.05 /month**
+* **Amazon ElastiCache:** ~$17.00 /month (Unchanged).
+* **AWS WAF:** ~$10.00 /month (Unchanged).
+* **Services (Post-Free Tier or expanded):**
+    * **EC2 (App Server):** 3 `t3.micro` servers = 3 * ~$7.60 = ~$22.80 /month
+    * **RDS (Database):** Multi-AZ (Primary + Replica) = ~$24.00 /month (Unchanged)
+    * **CloudFront, S3, etc:** ~$1.00 /month
+
+> **Total Estimated Cost (Phase 2):**
+> ~$20 (ALB) + ~$103.05 (NAT) + ~$17 (Cache) + ~$10 (WAF) + ~$22.80 (EC2) + ~$24 (RDS) + ~$1 (Other)
+> **= Approx. $195 - $200 USD /month**
+
+---
+
+### 6. Risk Assessment
+
+* **Cost Risk (High):**
+    * Costs for NAT Gateway, ALB, and RDS Multi-AZ are significant. The Phase 2 architecture nearly doubles the cost.
+    * **Mitigation:** Start with Phase 1. Set up **AWS Budgets** to alert on cost thresholds. Terminate/delete resources (especially NAT GWs) when not in development.
+
+* **Network Configuration Risk (High):**
+    * This is a complex network architecture (VPC, Subnets, Route Tables, WAF). A single misconfiguration can lead to system failure or security vulnerabilities.
+    * **Mitigation:** Design the diagram carefully. Test connectivity step-by-step (EC2 -> RDS, EC2 -> NAT -> Internet).
+
+* **Single Point of Failure Risk (Medium - Phase 1):**
+    * The Phase 1 architecture uses a single NAT Gateway. If the AZ containing this NAT Gateway fails, private instances will lose outbound Internet access (e.g., for payment APIs).
+    * **Mitigation:** This is an acceptable risk for initial cost savings. Plan to upgrade to Phase 2 (3 AZ + 3 NAT) when the system requires higher reliability.
