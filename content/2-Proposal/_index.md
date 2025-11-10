@@ -33,7 +33,7 @@ We propose a "Well-Architected" design deployed within a custom AWS VPC.
 #### 3.1. Current Architecture (Phase 1): 2 AZs + 2 NAT Gateways (Recommended)
 
 To ensure High Availability from the start, the initial architecture will be deployed across **2 Availability Zones** with a fully fault-tolerant network infrastructure.
-<img src="/images/2-Proposal/architect2.jpg" alt="Sơ đồ kiến trúc 3 AZ 3 NAT" width="40%" height="800px">
+<img src="/images/2-Proposal/architect2.jpg" alt="Sơ đồ kiến trúc 3 AZ 3 NAT" width="55%" height="800px">
 
 * **Edge Layer:** (Unchanged)
     * Users access via **Amazon Route 53** -> **Amazon CloudFront (CDN)**.
