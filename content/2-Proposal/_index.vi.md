@@ -34,7 +34,7 @@ Chúng tôi đề xuất một kiến trúc "Well-Architected" được triển 
 
 Để cân bằng giữa chi phí và tính sẵn sàng, kiến trúc ban đầu sẽ được triển khai trên **2 Vùng Sẵn sàng (AZ)**.
 
-![Kiến trúc Giai đoạn 1: 2 AZ + 1 NAT Gateway](/images/proposal/architecture-2az-1nat.png)
+ > <img src="/images/2-Proposal/architect.jpeg" alt="" width="80%">
 
 * **Lớp Biên (Edge Layer):** (Không đổi)
     * Người dùng truy cập qua **Amazon Route 53** -> **Amazon CloudFront (CDN)**.
@@ -67,7 +67,7 @@ Chúng tôi đề xuất một kiến trúc "Well-Architected" được triển 
 
 Sau khi nền tảng hoạt động ổn định và có doanh thu, chúng ta có thể nâng cấp lên kiến trúc 3 AZ để đạt độ tin cậy tối đa.
 
-<<<![Kiến trúc Giai đoạn 2: 3 AZ + 3 NAT Gateway](/images/2-Proposal/architect.jpeg)>>>
+ > <img src="/images/2-Proposal/architect.jpeg" alt="" width="80%">
 
 * **Thay đổi chính:**
     1.  Mở rộng VPC để hỗ trợ **3 Vùng Sẵn sàng (AZ)**.

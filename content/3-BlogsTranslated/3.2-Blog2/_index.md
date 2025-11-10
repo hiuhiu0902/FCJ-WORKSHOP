@@ -19,6 +19,7 @@ In [Part 1]({{< ref "/3-blogstranslated/3.1-blog1" >}}) of this series, we discu
 ## Solution overview
 
 The solution overview diagram was introduced in [Part 1]({{< ref "/3-blogstranslated/3.1-blog1" >}}).
+<img src="/images/bl2-1.png" alt="" width="50%">
 
 ## Stream ingestion
 
@@ -32,6 +33,7 @@ Consumers process not only source events but also [re-published](https://docs.co
 Most features are created based on two types of events: events that occur due to real-time user actions, and asynchronous events that occur due to state changes in user and article data. These events and features have an M:N relationship, meaning that one event can be the source of multiple features, and one feature can be created based on multiple events.
 
 > *Architecture diagram of the stream ingestion pipeline.*
+> <img src="/images/bl2-2.png" alt="" width="50%">
 
 To efficiently handle M:N relationships, a structure is needed to receive events and distribute them to multiple feature processing logics. Two core components were designed for this purpose:
 
@@ -80,6 +82,7 @@ When adding new features, batch loading past data or periodically loading large 
 There were several options to choose from, such as [Apache Airflow](https://airflow.apache.org/), but AWS Batch was chosen to avoid over-engineering when considering the operating costs according to the current requirements.
 
 > *Architecture diagram of the batch ingestion pipeline.*
+> <img src="/images/bl2-3.png" alt="" width="50%">
 
 The main components are:
 

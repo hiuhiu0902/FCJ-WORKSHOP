@@ -1,26 +1,22 @@
 ---
-title: "Các bài blogs đã dịch"
+title: "Translated Blogs"
 date: "2025-09-09T19:53:52+07:00"
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}  
+{{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã dịch. Ví dụ:
+This section will list and introduce the blogs you have translated.
 
-###  [Blog 1 - Getting started with healthcare data lakes: Using microservices](3.1-Blog1/)
-Blog này giới thiệu cách bắt đầu xây dựng data lake trong lĩnh vực y tế bằng cách áp dụng kiến trúc microservices. Bạn sẽ tìm hiểu vì sao data lake quan trọng trong việc lưu trữ và phân tích dữ liệu y tế đa dạng (hồ sơ bệnh án điện tử, dữ liệu xét nghiệm, thiết bị IoT y tế…), cách microservices giúp hệ thống linh hoạt, dễ mở rộng và dễ bảo trì hơn. Bài viết cũng hướng dẫn các bước khởi tạo môi trường, tổ chức pipeline xử lý dữ liệu, và đảm bảo tuân thủ các tiêu chuẩn bảo mật & quyền riêng tư như HIPAA.
-###  [Blog 2 - ...](3.2-Blog2/)
-Blog này giới thiệu cách bắt đầu xây dựng data lake trong lĩnh vực y tế bằng cách áp dụng kiến trúc microservices. Bạn sẽ tìm hiểu vì sao data lake quan trọng trong việc lưu trữ và phân tích dữ liệu y tế đa dạng (hồ sơ bệnh án điện tử, dữ liệu xét nghiệm, thiết bị IoT y tế…), cách microservices giúp hệ thống linh hoạt, dễ mở rộng và dễ bảo trì hơn. Bài viết cũng hướng dẫn các bước khởi tạo môi trường, tổ chức pipeline xử lý dữ liệu, và đảm bảo tuân thủ các tiêu chuẩn bảo mật & quyền riêng tư như HIPAA.
-###  [Blog 3 - ...](3.3-Blog3/)
-Blog này giới thiệu cách bắt đầu xây dựng data lake trong lĩnh vực y tế bằng cách áp dụng kiến trúc microservices. Bạn sẽ tìm hiểu vì sao data lake quan trọng trong việc lưu trữ và phân tích dữ liệu y tế đa dạng (hồ sơ bệnh án điện tử, dữ liệu xét nghiệm, thiết bị IoT y tế…), cách microservices giúp hệ thống linh hoạt, dễ mở rộng và dễ bảo trì hơn. Bài viết cũng hướng dẫn các bước khởi tạo môi trường, tổ chức pipeline xử lý dữ liệu, và đảm bảo tuân thủ các tiêu chuẩn bảo mật & quyền riêng tư như HIPAA.
-###  [Blog 4 - ...](3.4-Blog4/)
-Blog này giới thiệu cách bắt đầu xây dựng data lake trong lĩnh vực y tế bằng cách áp dụng kiến trúc microservices. Bạn sẽ tìm hiểu vì sao data lake quan trọng trong việc lưu trữ và phân tích dữ liệu y tế đa dạng (hồ sơ bệnh án điện tử, dữ liệu xét nghiệm, thiết bị IoT y tế…), cách microservices giúp hệ thống linh hoạt, dễ mở rộng và dễ bảo trì hơn. Bài viết cũng hướng dẫn các bước khởi tạo môi trường, tổ chức pipeline xử lý dữ liệu, và đảm bảo tuân thủ các tiêu chuẩn bảo mật & quyền riêng tư như HIPAA.
-###  [Blog 5 - ...](3.5-Blog5/)
-Blog này giới thiệu cách bắt đầu xây dựng data lake trong lĩnh vực y tế bằng cách áp dụng kiến trúc microservices. Bạn sẽ tìm hiểu vì sao data lake quan trọng trong việc lưu trữ và phân tích dữ liệu y tế đa dạng (hồ sơ bệnh án điện tử, dữ liệu xét nghiệm, thiết bị IoT y tế…), cách microservices giúp hệ thống linh hoạt, dễ mở rộng và dễ bảo trì hơn. Bài viết cũng hướng dẫn các bước khởi tạo môi trường, tổ chức pipeline xử lý dữ liệu, và đảm bảo tuân thủ các tiêu chuẩn bảo mật & quyền riêng tư như HIPAA.
-###  [Blog 6 - ...](3.6-Blog6/)
-Blog này giới thiệu cách bắt đầu xây dựng data lake trong lĩnh vực y tế bằng cách áp dụng kiến trúc microservices. Bạn sẽ tìm hiểu vì sao data lake quan trọng trong việc lưu trữ và phân tích dữ liệu y tế đa dạng (hồ sơ bệnh án điện tử, dữ liệu xét nghiệm, thiết bị IoT y tế…), cách microservices giúp hệ thống linh hoạt, dễ mở rộng và dễ bảo trì hơn. Bài viết cũng hướng dẫn các bước khởi tạo môi trường, tổ chức pipeline xử lý dữ liệu, và đảm bảo tuân thủ các tiêu chuẩn bảo mật & quyền riêng tư như HIPAA.
+### [Blog 1 - Karrot đã xây dựng nền tảng tính năng (feature platform) trên AWS như thế nào, Phần 1: Động lực và phục vụ tính năng (feature serving)](3.1-Blog1/)
+Bài blog này phân tích lý do Karrot, cộng đồng địa phương hàng đầu Hàn Quốc, cần xây dựng một nền tảng tính năng (feature platform) mới. Bài viết đi sâu vào các vấn đề của kiến trúc cũ (phụ thuộc vào máy chủ, khó mở rộng) và trình bày kiến trúc giải pháp mới. Phần này tập trung vào thành phần **Feature Serving**, giải thích cách họ sử dụng multi-level cache (Local Cache, Amazon ElastiCache, Amazon DynamoDB) để đạt được độ trễ thấp cho hệ thống đề xuất ML của mình.
+
+### [Blog 2 - Karrot đã xây dựng nền tảng tính năng (feature platform) trên AWS như thế nào, Phần 2: Nhập tính năng (Feature ingestion)](3.2-Blog2/)
+Phần tiếp theo này đi sâu vào thành phần **Feature Ingestion** của nền tảng. Bài viết giải thích chi tiết hai quy trình: **Stream Ingestion** (thu thập dữ liệu thời gian thực) sử dụng Amazon MSK và Amazon EKS, và **Batch Ingestion** (xử lý dữ liệu theo lô) sử dụng AWS Batch và AWS Fargate. Bài blog cũng chia sẻ các kết quả đạt được, bao gồm khả năng xử lý lưu lượng truy cập lớn và tối ưu hóa chi phí nhờ các dịch vụ AWS.
+
+### [Blog 3 - Triển khai LLMs trên Amazon EKS bằng cách sử dụng vLLM Deep Learning Containers](3.3-Blog3/)
+Bài blog này cung cấp một hướng dẫn kỹ thuật chi tiết về cách triển khai các Large Language Models (LLMs) hiệu suất cao trên Amazon EKS. Giải pháp sử dụng vLLM Deep Learning Containers (DLCs) để tối ưu hóa, kết hợp với các instance P4d (GPU A100), Elastic Fabric Adapter (EFA) cho mạng tốc độ cao, và Amazon FSx for Lustre để lưu trữ model weights. Bài viết hướng dẫn từng bước thiết lập môi trường, từ tạo cluster EKS, cấu hình node group, đến triển khai và kiểm tra API.

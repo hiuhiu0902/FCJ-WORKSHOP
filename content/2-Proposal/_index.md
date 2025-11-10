@@ -34,8 +34,7 @@ We propose a "Well-Architected" framework deployed within a custom AWS VPC.
 
 To balance cost and availability, the initial architecture will be deployed across **2 Availability Zones (AZs)**.
 
-![Phase 1 Architecture: 2 AZ + 1 NAT Gateway](/images/proposal/architecture-2az-1nat.png)
-
+ > <img src="/images/2-Proposal/architect.jpeg" alt="" width="80%">
 * **Edge Layer:** (Unchanged)
     * Users access via **Amazon Route 53** -> **Amazon CloudFront (CDN)**.
     * **AWS WAF** and **AWS Shield** are integrated with CloudFront to block attacks.
@@ -67,7 +66,7 @@ To balance cost and availability, the initial architecture will be deployed acro
 
 After the platform is stable and generating revenue, we can upgrade to a 3 AZ architecture for maximum reliability.
 
-![Phase 2 Architecture: 3 AZ + 3 NAT Gateway](/images/proposal/architecture-3az-3nat.png)
+ > <img src="/images/2-Proposal/architect.jpeg" alt="" width="80%">
 
 * **Key Changes:**
     1.  Expand the VPC to support **3 Availability Zones (AZs)**.

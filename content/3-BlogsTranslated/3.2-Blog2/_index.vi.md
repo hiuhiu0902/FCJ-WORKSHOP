@@ -19,6 +19,7 @@ Trong [Phần 1]({{< ref "/3-blogstranslated/3.1-blog1" >}}) của loạt bài n
 ## Tổng quan về giải pháp
 
 Sơ đồ tổng quan về kiến trúc đã được giới thiệu trong [Phần 1]({{< ref "/3-blogstranslated/3.1-blog1" >}}).
+<img src="/images/bl2-1.png" alt="" width="50%">
 
 ## Stream ingestion (Nhập dữ liệu luồng)
 
@@ -32,6 +33,7 @@ Các Consumers xử lý không chỉ các sự kiện nguồn mà còn cả các
 Hầu hết các features được tạo dựa trên hai loại sự kiện: các sự kiện xảy ra do hành động người dùng theo thời gian thực, và các sự kiện không đồng bộ xảy ra do thay đổi trạng thái trong dữ liệu người dùng và bài viết. Các sự kiện và features này có mối quan hệ M:N, nghĩa là một sự kiện có thể là nguồn của nhiều features, và một feature có thể được tạo dựa trên nhiều sự kiện.
 
 > *Sơ đồ kiến trúc của stream ingestion pipeline.*
+<img src="/images/bl2-2.png" alt="" width="50%">
 
 Để xử lý hiệu quả các mối quan hệ M:N, cần có một cấu trúc để nhận các sự kiện và phân phối chúng đến nhiều logic xử lý feature. Hai thành phần cốt lõi đã được thiết kế cho mục đích này:
 
@@ -80,6 +82,7 @@ Khi thêm features mới, việc tải batch dữ liệu quá khứ hoặc tải
 Có một số tùy chọn để lựa chọn, chẳng hạn như [Apache Airflow](https://airflow.apache.org/), nhưng AWS Batch đã được chọn để tránh over-engineering khi xem xét chi phí vận hành theo các yêu cầu hiện tại.
 
 > *Sơ đồ kiến trúc của batch ingestion pipeline.*
+> <img src="/images/bl2-3.png" alt="" width="50%">
 
 Các thành phần chính là:
 
