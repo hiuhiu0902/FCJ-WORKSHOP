@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 This section will list and introduce the blogs you have translated.
 
 ### [Blog 1 - How Karrot Built its Feature Platform on AWS, Part 1: Motivation and Feature Serving](3.1-Blog1/)

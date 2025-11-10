@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 This section will list and introduce the blogs you have translated.
 
 ### [Blog 1 - Karrot đã xây dựng nền tảng tính năng (feature platform) trên AWS như thế nào, Phần 1: Động lực và phục vụ tính năng (feature serving)](3.1-Blog1/)
