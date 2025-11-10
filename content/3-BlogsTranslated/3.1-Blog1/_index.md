@@ -5,7 +5,6 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
-# How Karrot Built its Feature Platform on AWS, Part 1: Motivation and Feature Serving
 
 > Authors: Hyeonho Kim, Jinhyeong Seo, Minjae Kwon, Hyuk Lee, Jinhyun Park, Jungwoo Song, and Nak-Kwon Choi | on: AUGUST 14, 2025 | In: [Advanced (300)](https://aws.amazon.com/blogs/architecture/category/learning-levels/advanced-300/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/), [Amazon ElastiCache](https://aws.amazon.com/elasticache/), [Customer Solutions](https://aws.amazon.com/blogs/architecture/category/post-types/customer-solutions/)
 >

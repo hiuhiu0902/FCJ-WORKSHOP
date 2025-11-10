@@ -5,7 +5,6 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
-# Karrot đã xây dựng nền tảng tính năng (feature platform) trên AWS như thế nào, Phần 1: Động lực và phục vụ tính năng (feature serving)
 
 > Tác giả: Hyeonho Kim, Jinhyeong Seo, Minjae Kwon, Hyuk Lee, Jinhyun Park, Jungwoo Song, và Nak-KWon Choi | Ngày: 14 THÁNG 8, 2025 | Trong: [Advanced (300)](https://aws.amazon.com/blogs/architecture/category/learning-levels/advanced-300/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/), [Amazon ElastiCache](https://aws.amazon.com/elasticache/), [Customer Solutions](https://aws.amazon.com/blogs/architecture/category/post-types/customer-solutions/)
 >

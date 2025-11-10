@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Karrot đã xây dựng nền tảng tính năng (feature platform) trên AWS như thế nào, Phần 2: Nhập tính năng (Feature ingestion)
-
 > Tác giả: Hyeonho Kim, Jinhyeong Seo, Minjae Kwon, Hyuk Lee, Jinhyun Park, Jungwoo Song, và Nak-Kwon Choi | Ngày: 14 THÁNG 8, 2025 | Trong: [Advanced (300)](https://aws.amazon.com/blogs/architecture/category/learning-levels/advanced-300/), [Amazon Managed Streaming for Apache Kafka (Amazon MSK)](https://aws.amazon.com/msk/), [AWS Batch](https://aws.amazon.com/batch/), [AWS Fargate](https://aws.amazon.com/fargate/), [Customer Solutions](https://aws.amazon.com/blogs/architecture/category/post-types/customer-solutions/) | [Permalink](https://aws.amazon.com/blogs/architecture/how-karrot-built-a-feature-platform-on-aws-part-2-feature-ingestion/) | [Comments](https://aws.amazon.com/blogs/architecture/how-karrot-built-a-feature-platform-on-aws-part-2-feature-ingestion/#comments) |
 >
 > *Bài viết này đồng tác giả với Hyeonho Kim, Jinhyeong Seo và Minjae Kwon từ Karrot.*

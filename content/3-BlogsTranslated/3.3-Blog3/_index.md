@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-# Deploying LLMs on Amazon EKS Using vLLM Deep Learning Containers
-
 > Authors: Vishal Naik and Sumeet Tripathi | Date: August 14, 2025 | In: [AWS Deep Learning AMIs](https://aws.amazon.com/deep-learning-amis/), [Best Practices](https://aws.amazon.com/blogs/architecture/category/best-practices/), [Expert (400)](https://aws.amazon.com/blogs/architecture/category/learning-levels/expert-400/), [Generative AI](https://aws.amazon.com/generative-ai/), [Technical How-to](https://aws.amazon.com/blogs/architecture/category/post-types/technical-how-to/) | [Permalink](https://aws.amazon.com/blogs/architecture/deploy-llms-on-amazon-eks-using-vllm-deep-learning-containers/) | [Comments](https://aws.amazon.com/blogs/architecture/deploy-llms-on-amazon-eks-using-vllm-deep-learning-containers/#comments)
 
 Organizations face significant challenges when deploying large language models (LLMs) efficiently at scale. Major hurdles include optimizing GPU resource utilization, managing network infrastructure, and providing effective access to model weights. When running distributed inference workloads, organizations often encounter the complexity of orchestrating model activities across multiple nodes. Common challenges include effectively distributing model components across available GPUs, coordinating seamless communication between processing units, and maintaining consistent performance with low latency and high throughput.

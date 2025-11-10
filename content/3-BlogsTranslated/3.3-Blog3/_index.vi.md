@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-# Triển khai LLMs trên Amazon EKS bằng cách sử dụng vLLM Deep Learning Containers
-
 > Tác giả: Vishal Naik và Sumeet Tripathi | Ngày: 14 THÁNG 8, 2025 | Trong: [AWS Deep Learning AMIs](https://aws.amazon.com/deep-learning-amis/), [Best Practices](https://aws.amazon.com/blogs/architecture/category/best-practices/), [Expert (400)](https://aws.amazon.com/blogs/architecture/category/learning-levels/expert-400/), [Generative AI](https://aws.amazon.com/generative-ai/), [Technical How-to](https://aws.amazon.com/blogs/architecture/category/post-types/technical-how-to/) | [Permalink](https://aws.amazon.com/blogs/architecture/deploy-llms-on-amazon-eks-using-vllm-deep-learning-containers/) | [Comments](https://aws.amazon.com/blogs/architecture/deploy-llms-on-amazon-eks-using-vllm-deep-learning-containers/#comments)
 
 Các tổ chức phải đối mặt với những thách thức đáng kể khi triển khai các large language models (LLMs) một cách hiệu quả ở quy mô lớn. Các thách thức chính bao gồm tối ưu hóa việc sử dụng tài nguyên GPU, quản lý cơ sở hạ tầng mạng và cung cấp quyền truy cập hiệu quả vào model weights. Khi chạy các distributed inference workloads, các tổ chức thường gặp phải sự phức tạp trong việc điều phối các hoạt động của model trên nhiều nodes. Những thách thức phổ biến bao gồm phân phối hiệu quả các thành phần model trên các GPUs có sẵn, điều phối giao tiếp liền mạch giữa các đơn vị xử lý, và duy trì hiệu suất nhất quán với low latency và high throughput.

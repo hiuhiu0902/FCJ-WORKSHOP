@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# How Karrot Built its Feature Platform on AWS, Part 2: Feature ingestion
-
 > By: Hyeonho Kim, Jinhyeong Seo, Minjae Kwon, Hyuk Lee, Jinhyun Park, Jungwoo Song, and Nak-Kwon Choi | on: AUGUST 14, 2025 | In: [Advanced (300)](https://aws.amazon.com/blogs/architecture/category/learning-levels/advanced-300/), [Amazon Managed Streaming for Apache Kafka (Amazon MSK)](https://aws.amazon.com/msk/), [AWS Batch](https://aws.amazon.com/batch/), [AWS Fargate](https://aws.amazon.com/fargate/), [Customer Solutions](https://aws.amazon.com/blogs/architecture/category/post-types/customer-solutions/) | [Permalink](https://aws.amazon.com/blogs/architecture/how-karrot-built-a-feature-platform-on-aws-part-2-feature-ingestion/) | [Comments](https://aws.amazon.com/blogs/architecture/how-karrot-built-a-feature-platform-on-aws-part-2-feature-ingestion/#comments) |
 >
 > *This article is co-authored by Hyeonho Kim, Jinhyeong Seo, and Minjae Kwon from Karrot.*
