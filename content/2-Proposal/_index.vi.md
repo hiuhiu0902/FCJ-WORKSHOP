@@ -33,7 +33,7 @@ Chúng tôi đề xuất một kiến trúc "Well-Architected" được triển 
 #### 3.1. Kiến trúc Hiện tại (Giai đoạn 1): 2 AZ + 2 NAT Gateway (Khuyến nghị)
 
 Để đảm bảo tính sẵn sàng cao (High Availability) ngay từ đầu, kiến trúc ban đầu sẽ được triển khai trên **2 Vùng Sẵn sàng (AZ)** với hạ tầng mạng chịu lỗi hoàn toàn.
-<img src="/images/2-Proposal/architect2.jpg" alt="Sơ đồ kiến trúc 3 AZ 3 NAT" width="55%" height="800px">
+<img src="/images/2-Proposal/arrchitect2.jpg" alt="Sơ đồ kiến trúc 3 AZ 3 NAT" width="55%" height="800px">
 
 * **Lớp Biên (Edge Layer):** (Không đổi)
     * Người dùng truy cập qua **Amazon Route 53** -> **Amazon CloudFront (CDN)**.
