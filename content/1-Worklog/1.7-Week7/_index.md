@@ -1,57 +1,27 @@
 ---
 title: "Week 7 Worklog"
-date: "2025-09-09T19:53:52+07:00"
-weight: 1
+date: "2025-10-20T09:00:00+07:00"
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 7 Objectives:
+* Secure private network outbound traffic.
+* Manage secrets and WAF.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | **NAT Gateway:**<br>- Allow Private Subnet internet access. | 20/10/2025 | 20/10/2025 | |
+| 2 | **Secrets Manager:**<br>- Storing DB passwords.<br>- Rotation. | 21/10/2025 | 21/10/2025 | |
+| 3 | **WAF:**<br>- Basic SQL injection protection. | 22/10/2025 | 22/10/2025 | |
+| 4 | **Practice:**<br>- Create NAT Gateway.<br>- Verify Private EC2 internet access. | 23/10/2025 | 23/10/2025 | |
+| 5 | **Review:**<br>- Cost analysis of NAT. | 24/10/2025 | 24/10/2025 | |
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 🧠 Extra Knowledge: The Cost of NAT Gateways
+While implementing NAT Gateway, I learned it's one of the "hidden costs" in AWS. It charges not just for hourly usage (~$0.045/hr) but also for **Data Processing** ($0.045/GB). For the Game Card project, downloading heavy updates on private servers could be expensive. In the future, I might consider **VPC Endpoints** for accessing AWS services (like S3/DynamoDB) to avoid NAT processing fees.
 
-
-### Week 7 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### Achievements:
+* Enabled secure outbound internet using NAT Gateway (private instances can update OS but cannot be reached from outside).
+* Secured DB credentials with AWS Secrets Manager instead of hardcoding.

@@ -1,59 +1,78 @@
 ---
-title: "Worklog Tuần 10"
-date: "2025-09-09T19:53:52+07:00"
-weight: 2
+title: "Nhật ký Tuần 10"
+date: "2025-11-10T09:00:00+07:00"
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 10:
+* Triển khai logic nghiệp vụ cốt lõi (Xử lý đơn hàng).
+* Cấu hình Auto Scaling Group (ASG) cho ứng dụng Spring Boot.
 
-### Mục tiêu tuần 10:
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | **Launch Template:**<br>- Script cài Java 17 (Corretto) & chạy file Jar. | 10/11/2025 | 10/11/2025 | |
+| 2 | **Tích hợp Secrets:**<br>- Cấu hình app lấy mật khẩu DB từ AWS. | 11/11/2025 | 11/11/2025 | |
+| 3 | **Triển khai ASG:**<br>- Tạo ASG trải dài trên 2 AZs. | 12/11/2025 | 12/11/2025 | |
+| 4 | **Kết nối:**<br>- Gắn ASG vào ALB Target Group. | 13/11/2025 | 13/11/2025 | |
+| 5 | **Kiểm tra:**<br>- Test luồng mua hàng. | 14/11/2025 | 14/11/2025 | |
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 🧠 Kiến thức mở rộng: Tính toàn vẹn giao dịch (`@Transactional`)
+Trong thương mại điện tử, **Race Conditions** (Điều kiện đua) là rủi ro lớn (ví dụ: 2 người cùng mua 1 chiếc thẻ cuối cùng trong cùng 1 mili-giây).
+Tôi đã giải quyết vấn đề này bằng annotation `@Transactional` trong Spring Boot kết hợp với **Pessimistic Locking** (hàm `findAndLockCards` trong repository). Điều này đảm bảo khi người dùng bắt đầu thanh toán, các mã thẻ cụ thể sẽ bị khóa trong database cho đến khi giao dịch thành công hoặc bị hủy.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 💻 Backend Code: Logic Xử Lý Đơn Hàng
+Dưới đây là phương thức `createOrder` trong `OrderService.java`. Nó thể hiện cách tôi kiểm tra tồn kho, khóa thẻ và tạo đơn hàng trong một giao dịch nguyên tử (atomic transaction).
 
+**File:** `OrderService.java`
+```java
+@Transactional // Đảm bảo Atomicity: Tất cả thành công hoặc tất cả thất bại
+public Order createOrder(CreateOrderRequest request) {
+    User user = authenticationService.getCurrentUser();
+    Order order = new Order();
+    order.setUser(user);
+    order.setPayment(request.getPaymentMethod());
+    order.setCreatedAt(LocalDateTime.now());
+    order.setStatus(OrderStatus.PENDING);
 
-### Kết quả đạt được tuần 10:
+    List<OrderItem> items = new ArrayList<>();
+    Long total = 0L;
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+    for (OrderItemRequest item : request.getOrderItemRequests()) {
+        ProductVariant variant = productVariantsRepository.findById(item.getVariantId())
+                .orElseThrow(() -> new BadRequestException("Variant not found"));
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+        // Quan trọng: Khóa row trong DB để tránh bán trùng (Race condition)
+        List<Storage> storagesToSell = stockRepository.findAndLockCards(
+                CardStatus.UNUSED,
+                variant.getVariantId(),
+                PageRequest.of(0, item.getQuantity())
+        );
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+        if (storagesToSell.size() < item.getQuantity()) {
+            throw new BadRequestException("Not enough stock for variant: " + variant.getProduct().getName());
+        }
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+        OrderItem orderItem = new OrderItem();
+        orderItem.setOrder(order);
+        orderItem.setProduct(variant.getProduct());
+        orderItem.setQuantity(item.getQuantity());
+        orderItem.setPrice(variant.getPrice());
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+        items.add(orderItem);
+        total += variant.getPrice() * item.getQuantity();
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+        // Đánh dấu thẻ là PENDING ngay lập tức
+        for (Storage storage : storagesToSell) {
+            storage.setStatus(CardStatus.PENDING_PAYMENT);
+            storage.setOrderItem(orderItem);
+            stockRepository.save(storage);
+        }
+    }
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+    order.setOrderItems(items);
+    order.setTotalAmount(total);
+    return orderRepository.save(order);
+}

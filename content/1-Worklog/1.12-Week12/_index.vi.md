@@ -1,58 +1,63 @@
 ---
-title: "Worklog Tuần 12"
-date: "2025-09-09T19:53:52+07:00"
-weight: 2
+title: "Nhật ký Tuần 12"
+date: "2025-11-24T09:00:00+07:00"
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-### Mục tiêu tuần 12:
+### Mục tiêu Tuần 12:
+* Kiểm chứng khả năng chịu lỗi và đóng dự án.
+* Thực hiện kiểm thử Chaos Engineering với ứng dụng Java.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | **Test HA:**<br>- Xóa EC2 đang chạy file Jar, xem ASG tự tạo mới. | 24/11/2025 | 24/11/2025 | |
+| 2 | **Test DB Failover:**<br>- Reboot RDS với chế độ failover. | 25/11/2025 | 25/11/2025 | |
+| 3 | **Test Rollback Giao dịch:**<br>- Giả lập lỗi thanh toán khi đang tạo đơn. | 26/11/2025 | 26/11/2025 | |
+| 4 | **Tài liệu:**<br>- Báo cáo Post-Mortem. | 27/11/2025 | 27/11/2025 | |
+| 5 | **Đóng dự án:**<br>- **XÓA TOÀN BỘ TÀI NGUYÊN.** | 28/11/2025 | 28/11/2025 | |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 🧠 Kiến thức mở rộng: Tính chất ACID trong Kiểm thử
+Ngoài việc phá hoại hạ tầng (tắt server), tôi còn tập trung vào **Tính toàn vẹn dữ liệu**.
+Tôi đã kiểm chứng rằng nếu `OrderService.handlePaymentFailure()` được gọi, hệ thống sẽ rollback trạng thái kho từ `PENDING` về `UNUSED` một cách chính xác. Điều này khẳng định tính **A**tomicity (Nguyên tử) và **C**onsistency (Nhất quán) của MySQL database được quản lý bởi Spring Transaction.
 
+### 💻 Automation Code: Chaos Monkey Script (Giả lập sự cố)
+Tôi sử dụng một script Python (chạy bên ngoài ứng dụng Java) để tự động terminate một EC2 instance ngẫu nhiên, nhằm kiểm tra xem ASG có "cứu" hệ thống không.
 
-### Kết quả đạt được tuần 12:
+**File:** `chaos_test.py`
+```python
+import boto3
+import random
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+def kill_random_instance():
+    ec2 = boto3.client('ec2', region_name='ap-southeast-1')
+    
+    # 1. Lấy danh sách các instance đang chạy có tag Project=GameCard
+    response = ec2.describe_instances(
+        Filters=[
+            {'Name': 'tag:Project', 'Values': ['GameCard']},
+            {'Name': 'instance-state-name', 'Values': ['running']}
+        ]
+    )
+    
+    instances = []
+    for reservation in response['Reservations']:
+        for instance in reservation['Instances']:
+            instances.append(instance['InstanceId'])
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+    if not instances:
+        print("Không tìm thấy instance nào để 'giết'!")
+        return
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+    # 2. Chọn ngẫu nhiên 1 nạn nhân
+    victim_id = random.choice(instances)
+    
+    # 3. Terminate instance đó
+    print(f"🔥 Đang terminate instance: {victim_id} để test Auto Scaling...")
+    ec2.terminate_instances(InstanceIds=[victim_id])
+    print("✅ Đã gửi lệnh terminate. Hãy kiểm tra Console xem instance mới có được tạo không!")
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+if __name__ == '__main__':
+    kill_random_instance()

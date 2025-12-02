@@ -1,126 +1,74 @@
 ---
-title: "Event 2"
-date: "2025-09-09T19:53:52+07:00"
-weight: 1
+title: "AWS Cloud Mastery Series #3"
+date: "2025-11-29T08:30:00+07:00"
+weight: 3
 chapter: false
-pre: " <b> 4.2. </b> "
+pre: " <b> 4.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Summary Report: “AWS Well-Architected – Security Pillar Workshop”
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Event Overview
+**Date:** November 29, 2025
+**Location:** AWS Vietnam Office
+**Scale:** Over 350 cloud engineers, architects, and students.
 
 ### Event Objectives
+- Comprehensive coverage of the security lifecycle on AWS.
+- Bridging the gap between foundational architecture and real-world production security incidents.
+- Building a sustainable cloud security community in Vietnam.
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
-
-### Speakers
-
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+### Speaker
+- **Hoang Van Kha** (and the FCAJ organizing team)
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### 1. Security Foundations
+- **Core Philosophies:** Shared Responsibility Model, Zero Trust, and Defense in Depth.
+- **Design Principle:** Implementing **"Least-privilege by design"** from day one, not as an afterthought.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### 2. Identity & Access Management (IAM)
+- **Identity-first Architecture:** shifting focus from network perimeter to identity perimeter.
+- **Modern Controls:** Using **IAM Identity Center** for SSO, enforcing permission boundaries, and MFA.
+- **Continuous Analysis:** Moving beyond static permissions to continuous access analysis.
 
-#### Transitioning to modern application architecture – Microservices
+#### 3. Detection & Monitoring
+- **Org-level Visibility:** Implementing CloudTrail at the Organization level for comprehensive audit trails.
+- **Full-layer Logging:** GuardDuty, Security Hub, and centralized logging.
+- **Detection-as-Code:** Treating detection rules as software artifacts to automate threat identification.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### 4. Infrastructure & Application Protection
+- **Network Defense:** VPC segmentation strategies, Security Groups vs NACLs, and perimeter defense with AWS WAF, Shield, and Network Firewall.
+- **AppSec:** Secure workload configuration, integrating security controls into CI/CD pipelines, and runtime protection.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### 5. Data Protection
+- **Encryption:** Enforcement at rest and in transit across all services.
+- **Secrets Management:** Utilizing AWS KMS, Secrets Manager, and Parameter Store.
+- **Guardrails:** Establishing strict data access guardrails to prevent unauthorized exposure.
 
-#### Domain-Driven Design (DDD)
+#### 6. Incident Response (IR)
+- **IR Lifecycle:** Aligning with AWS standards (Preparation -> Detection -> Recovery).
+- **Forensics:** Techniques for isolation, snapshotting, and **forensic evidence collection**.
+- **Automation:** Using Lambda and Step Functions for automated remediation to reduce mean time to recovery (MTTR).
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+### Key Takeaways for "First Cloud Journey"
 
-#### Event-Driven Architecture
+#### The "Identity-First" Shift
+- Security is no longer just about firewalls (Infrastructure Protection); it's about Identity. We must master IAM Roles and Identity Center as the primary defense layer.
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+#### Automation is Mandatory
+- "Manual security is failed security." The shift towards **Detection-as-Code** and automated remediation (using Lambda) is essential for scaling security in modern cloud environments.
 
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
-
-### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+#### Community & Continuous Learning
+- Security is a vast field. The roadmap ahead requires deep dives into **DevSecOps**, **Zero Trust**, and **Security Automation**.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending the workshop at the AWS Vietnam Office was an energizing experience, witnessing over **100 participants** ranging from students to seasoned architects.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+**What stood out:**
+- **The Atmosphere:** The blend of learning and real-world experience created a high-quality technical discussion environment. It wasn't just theory; we discussed real production incidents and automation patterns.
+- **Practicality:** The session successfully bridged the gap between abstract concepts (like Zero Trust) and concrete implementations (like using permission boundaries and KMS).
+- **Community:** Seeing the strong engagement from the FCAJ team and the participants highlighted the growing strength of the cloud security community in Vietnam.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> **Next Steps:** I look forward to the upcoming phases focusing on **DevSecOps** and **Security Automation** to further deepen my technical expertise.

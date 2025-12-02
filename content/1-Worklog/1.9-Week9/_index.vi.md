@@ -1,59 +1,60 @@
 ---
-title: "Worklog Tuần 9"
-date: "2025-09-09T19:53:52+07:00"
-weight: 1
+title: "Nhật ký Tuần 9"
+date: "2025-11-03T09:00:00+07:00"
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 9:
+* Xây dựng hạ tầng cốt lõi theo thiết kế dự án Bán Thẻ Game.
+* Thiết lập dự án **Spring Boot** và kết nối Cơ sở dữ liệu.
 
-### Mục tiêu tuần 9:
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | **Xây dựng VPC:**<br>- VPC, 2 Public Subnet, 2 Private Subnet. | 03/11/2025 | 03/11/2025 | |
+| 2 | **Cổng kết nối:**<br>- Triển khai IGW và 2 NAT Gateway (Sẵn sàng cao). | 04/11/2025 | 04/11/2025 | |
+| 3 | **Cơ sở dữ liệu:**<br>- Khởi chạy RDS MySQL (Multi-AZ). | 05/11/2025 | 05/11/2025 | |
+| 4 | **Backend Setup:**<br>- Khởi tạo Spring Boot project.<br>- Cấu hình JPA & Hibernate. | 06/11/2025 | 06/11/2025 | |
+| 5 | **Kiểm tra:**<br>- Kiểm tra kết nối từ EC2 (Spring Boot) sang RDS. | 07/11/2025 | 07/11/2025 | |
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 🧠 Kiến thức mở rộng: JPA Specifications
+Trong phần logic Backend, thay vì viết các câu lệnh SQL thô khó bảo trì, tôi đã sử dụng **Spring Data JPA Specifications**. Kỹ thuật này cho phép tôi xây dựng các truy vấn động (ví dụ: lọc sản phẩm theo tên, nhà mạng VÀ khoảng giá cùng lúc) một cách an toàn và hướng đối tượng.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 💻 Backend Code: Tìm kiếm Sản phẩm Động
+Dưới đây là cách tôi triển khai logic tìm kiếm nâng cao trong `ProductService.java` sử dụng `Specification` và `CriteriaBuilder`.
 
+**File:** `ProductService.java`
+```java
+public Page<ProductResponse> searchProductsPublic(String keyword, String branchName, Long minPrice, Long maxPrice, Pageable pageable) {
+    Specification<Product> spec = (root, query, cb) -> {
+        List<Predicate> predicates = new ArrayList<>();
 
-### Kết quả đạt được tuần 9:
+        // Tìm theo tên (Không phân biệt hoa thường)
+        if (StringUtils.hasText(keyword)) {
+            predicates.add(cb.like(cb.lower(root.get("name")), "%" + keyword.toLowerCase() + "%"));
+        }
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+        // Lọc theo Nhà mạng (Branch)
+        if (StringUtils.hasText(branchName)) {
+            predicates.add(cb.equal(root.get("branch").get("name"), branchName));
+        }
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+        // Lọc theo khoảng giá (Join bảng Variants)
+        if (minPrice != null || maxPrice != null) {
+            var variantJoin = root.join("variant");
+            if (minPrice != null) {
+                predicates.add(cb.greaterThanOrEqualTo(variantJoin.get("price"), minPrice));
+            }
+            if (maxPrice != null) {
+                predicates.add(cb.lessThanOrEqualTo(variantJoin.get("price"), maxPrice));
+            }
+            query.distinct(true); // Tránh trùng lặp sản phẩm
+        }
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+        return cb.and(predicates.toArray(new Predicate[0]));
+    };
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+    return productRepository.findAll(spec, pageable).map(this::convertToProductResponse);
+}

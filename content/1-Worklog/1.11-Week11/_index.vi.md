@@ -1,59 +1,57 @@
 ---
-title: "Worklog Tuần 11"
-date: "2025-09-09T19:53:52+07:00"
-weight: 2
+title: "Nhật ký Tuần 11"
+date: "2025-11-17T09:00:00+07:00"
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 11:
+* Triển khai Bảo mật ứng dụng (Spring Security).
+* Tối ưu hóa phân phối với CloudFront và WAF.
 
-### Mục tiêu tuần 11:
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | **Route 53:**<br>- Bản ghi Alias trỏ về ALB. | 17/11/2025 | 17/11/2025 | |
+| 2 | **CloudFront:**<br>- Thiết lập Distribution (CDN). | 18/11/2025 | 18/11/2025 | |
+| 3 | **WAF:**<br>- Gắn vào CloudFront để chặn tấn công. | 19/11/2025 | 19/11/2025 | |
+| 4 | **Spring Security:**<br>- Cấu hình JWT Filter và AuthenticationManager. | 20/11/2025 | 20/11/2025 | |
+| 5 | **Cấu hình cuối:**<br>- Chuyển hướng HTTPS. | 21/11/2025 | 21/11/2025 | |
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 🧠 Kiến thức mở rộng: Stateful vs Stateless Auth
+Khác với xác thực dựa trên Session truyền thống (Stateful), tôi đã triển khai **Xác thực phi trạng thái (Stateless)** sử dụng JWT.
+* **Cơ chế:** Khi người dùng đăng nhập qua `AuthenticationService`, server xác thực và cấp một Token có chữ ký số.
+* **Lợi ích:** Server không cần lưu dữ liệu session trong RAM. Điều này cho phép Auto Scaling Group mở rộng ứng dụng theo chiều ngang thoải mái mà không lo về vấn đề "Sticky Sessions".
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 💻 Backend Code: Dịch vụ Xác thực An toàn
+Dưới đây là logic `login` trong `AuthenticationService.java`. Nó ủy quyền việc kiểm tra mật khẩu cho `AuthenticationManager` của Spring Security để đảm bảo an toàn.
 
+**File:** `AuthenticationService.java`
+```java
+public AccountResponse login(LoginRequest loginRequest) {
+    try {
+        // 1. Ủy quyền xác thực cho Spring Security Manager
+        // Bước này sẽ kiểm tra username/password với DB (đã mã hóa BCrypt)
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginRequest.getUsername(),
+                loginRequest.getPassword()
+        ));
+    } catch (BadRequestException e) {
+        throw new BadRequestException("Invalid username or password");
+    }
 
-### Kết quả đạt được tuần 11:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+    // 2. Nếu hợp lệ, lấy thông tin user
+    User user = authenticationRepository.findUserByUsername(loginRequest.getUsername());
+    Member profile = memberRepository.findMemberByUser(user);
+    
+    // 3. Sinh JWT Token
+    String token = tokenService.generateToken(user);
+    
+    AccountResponse response = new AccountResponse();
+    response.setUsername(user.getUsername());
+    response.setRole(user.getRole());
+    response.setAddress(profile.getAddress());
+    response.setToken(token); // Trả Token về cho Client
+    return response;
+}

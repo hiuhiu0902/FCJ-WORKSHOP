@@ -1,57 +1,31 @@
 ---
 title: "Week 2 Worklog"
-date: "2025-09-09T19:53:52+07:00"
-weight: 1
+date: "2025-09-15T09:00:00+07:00"
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 2 Objectives:
+* Master AWS Networking fundamentals.
+* Understand how to isolate resources using VPCs and Subnets.
+* Control traffic flow with Route Tables and Security Groups.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | **VPC & Subnets:**<br>- Learn CIDR notation.<br>- Understand Default vs. Custom VPC.<br>- Public vs. Private Subnets difference. | 15/09/2025 | 15/09/2025 | [AWS VPC Docs](https://docs.aws.amazon.com/vpc/) |
+| 2 | **Connectivity:**<br>- Internet Gateway (IGW) setup.<br>- Route Tables (Main vs. Custom).<br>- Associating Subnets with Route Tables. | 16/09/2025 | 16/09/2025 | |
+| 3 | **Security:**<br>- **Security Groups** (Stateful) vs. **NACLs** (Stateless).<br>- Create a Security Group allowing SSH (22) and HTTP (80) only from my IP. | 17/09/2025 | 17/09/2025 | |
+| 4 | **Practice Lab:**<br>- Create a custom VPC.<br>- Create 1 Public Subnet and attach an IGW.<br>- Attempt to ping an instance. | 18/09/2025 | 18/09/2025 | |
+| 5 | **Review:**<br>- Validate understanding of "Public" (has IGW route) vs "Private" (no IGW route). | 19/09/2025 | 19/09/2025 | |
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                             | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 🧠 Extra Knowledge: The "Stateful" Nature of Security Groups
+While configuring the Security Group today, I learned an important distinction:
+* **Security Groups are Stateful:** If I allow an *inbound* request on port 80, the response (outbound) is automatically allowed, regardless of outbound rules.
+* **NACLs are Stateless:** I must explicitly allow traffic in *both* directions (Inbound and Outbound), otherwise the response packet gets dropped. This explains why my ping failed when I used NACLs but forgot the outbound rule!
 
-
-### Week 2 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### Achievements:
+* Successfully created a custom VPC with logically divided subnets (CIDR /16 and /24).
+* Configured a functioning Internet Gateway and Route Table.
+* Verified network security using restricted Security Groups.

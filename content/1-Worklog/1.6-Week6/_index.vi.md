@@ -1,58 +1,29 @@
 ---
-title: "Worklog Tuần 6"
-date: "2025-09-09T19:53:52+07:00"
-weight: 1
+title: "Nhật ký Tuần 6"
+date: "2025-10-13T09:00:00+07:00"
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 6:
+* Học về dịch vụ cơ sở dữ liệu quản lý (RDS).
+* Hiểu Multi-AZ và Read Replicas.
 
-### Mục tiêu tuần 6:
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | **Cơ bản RDS:**<br>- DB Engines.<br>- Triển khai Multi-AZ. | 13/10/2025 | 13/10/2025 | |
+| 2 | **Hiệu năng RDS:**<br>- Read Replicas.<br>- RDS Security Groups. | 14/10/2025 | 14/10/2025 | |
+| 3 | **ElastiCache:**<br>- Cơ bản về Redis.<br>- Chiến lược Caching. | 15/10/2025 | 15/10/2025 | |
+| 4 | **Thực hành:**<br>- Khởi chạy RDS (MySQL).<br>- Kết nối từ EC2. | 16/10/2025 | 16/10/2025 | |
+| 5 | **Ôn tập:**<br>- Chiến lược sao lưu (Backup). | 17/10/2025 | 17/10/2025 | |
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 🧠 Kiến thức mở rộng: Multi-AZ và Read Replica
+Rất quan trọng để không nhầm lẫn hai khái niệm này:
+* **Multi-AZ** dùng cho *Tính sẵn sàng cao (HA)*. Dữ liệu được sao chép **Đồng bộ (Synchronous)**. Thường ta không thể đọc dữ liệu từ máy phụ (Standby) trừ khi máy chính bị sập.
+* **Read Replica** dùng cho *Hiệu năng*. Dữ liệu được sao chép **Bất đồng bộ (Asynchronous)** (có độ trễ nhỏ). Ta có thể chia tải các câu lệnh truy vấn nặng sang đây để giảm tải cho DB chính.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+### Thành tựu đạt được:
+* Đã triển khai Database MySQL được AWS quản lý (không cần lo việc vá lỗi HĐH).
+* Kết nối thành công từ Web Server vào Database dùng chuỗi Security Group.

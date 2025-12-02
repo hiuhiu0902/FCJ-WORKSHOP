@@ -1,57 +1,78 @@
 ---
 title: "Week 10 Worklog"
-date: "2025-09-09T19:53:52+07:00"
-weight: 2
+date: "2025-11-10T09:00:00+07:00"
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 10 Objectives:
+* Deploy the core business logic (Order Processing).
+* Configure Auto Scaling Group (ASG) for the Spring Boot application.
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks:
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | **Launch Template:**<br>- Script to install Java 17 (Corretto) & Run Jar file. | 10/11/2025 | 10/11/2025 | |
+| 2 | **Secrets Integration:**<br>- App config to fetch DB password. | 11/11/2025 | 11/11/2025 | |
+| 3 | **ASG Deployment:**<br>- Create ASG spanning 2 AZs. | 12/11/2025 | 12/11/2025 | |
+| 4 | **Connection:**<br>- Attach ASG to ALB Target Group. | 13/11/2025 | 13/11/2025 | |
+| 5 | **Verification:**<br>- Test Purchase Flow. | 14/11/2025 | 14/11/2025 | |
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### 🧠 Extra Knowledge: Transactional Integrity (`@Transactional`)
+In e-commerce, **Race Conditions** are a major risk (e.g., two users buying the last card at the exact same millisecond).
+I addressed this by using the `@Transactional` annotation in Spring Boot combined with **Pessimistic Locking** (`findAndLockCards` in repository). This ensures that once a user starts the checkout process, the specific card codes are locked in the database until the transaction commits or rolls back.
 
+### 💻 Backend Code: Order Processing Logic
+Below is the `createOrder` method in `OrderService.java`. It demonstrates how I verify stock, lock the items, and create the order in a single atomic transaction.
 
-### Week 10 Achievements:
+**File:** `OrderService.java`
+```java
+@Transactional // Ensures Atomicity: All succeed or all fail
+public Order createOrder(CreateOrderRequest request) {
+    User user = authenticationService.getCurrentUser();
+    Order order = new Order();
+    order.setUser(user);
+    order.setPayment(request.getPaymentMethod());
+    order.setCreatedAt(LocalDateTime.now());
+    order.setStatus(OrderStatus.PENDING);
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+    List<OrderItem> items = new ArrayList<>();
+    Long total = 0L;
 
-* Successfully created and configured an AWS Free Tier account.
+    for (OrderItemRequest item : request.getOrderItemRequests()) {
+        ProductVariant variant = productVariantsRepository.findById(item.getVariantId())
+                .orElseThrow(() -> new BadRequestException("Variant not found"));
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+        // Critical: Lock stock to prevent race conditions
+        List<Storage> storagesToSell = stockRepository.findAndLockCards(
+                CardStatus.UNUSED,
+                variant.getVariantId(),
+                PageRequest.of(0, item.getQuantity())
+        );
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+        if (storagesToSell.size() < item.getQuantity()) {
+            throw new BadRequestException("Not enough stock for variant: " + variant.getProduct().getName());
+        }
 
-* Used AWS CLI to perform basic operations such as:
+        OrderItem orderItem = new OrderItem();
+        orderItem.setOrder(order);
+        orderItem.setProduct(variant.getProduct());
+        orderItem.setQuantity(item.getQuantity());
+        orderItem.setPrice(variant.getPrice());
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+        items.add(orderItem);
+        total += variant.getPrice() * item.getQuantity();
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+        // Mark cards as PENDING immediately
+        for (Storage storage : storagesToSell) {
+            storage.setStatus(CardStatus.PENDING_PAYMENT);
+            storage.setOrderItem(orderItem);
+            stockRepository.save(storage);
+        }
+    }
+
+    order.setOrderItems(items);
+    order.setTotalAmount(total);
+    return orderRepository.save(order);
+}

@@ -1,59 +1,28 @@
 ---
-title: "Worklog Tuần 3"
-date: "2025-09-09T19:53:52+07:00"
-weight: 1
+title: "Nhật ký Tuần 3"
+date: "2025-09-22T09:00:00+07:00"
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 3:
+* Hiểu các dịch vụ cốt lõi về Tính toán (EC2) và Lưu trữ (EBS, S3).
+* Học cách quản lý tính bền vững của dữ liệu.
 
-### Mục tiêu tuần 3:
+### Nhiệm vụ trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | **Chuyên sâu EC2:**<br>- Các loại Instance (T3, M5...).<br>- Lựa chọn AMI.<br>- Key Pairs & kịch bản User Data. | 22/09/2025 | 22/09/2025 | [AWS EC2 Docs](https://docs.aws.amazon.com/ec2/) |
+| 2 | **EBS (Block Storage):**<br>- Các loại Volume (gp3, io2).<br>- Gắn/Gỡ volume.<br>- Snapshot & Lifecycle Manager. | 23/09/2025 | 23/09/2025 | |
+| 3 | **S3 (Object Storage):**<br>- Buckets & Objects.<br>- Các lớp lưu trữ (Standard, IA, Glacier).<br>- Versioning & Bucket Policies. | 24/09/2025 | 24/09/2025 | |
+| 4 | **Thực hành Lab:**<br>- Khởi chạy EC2 dùng User Data cài Apache.<br>- Tạo S3 bucket host file `index.html`. | 25/09/2025 | 25/09/2025 | |
+| 5 | **Ôn tập:**<br>- Phân biệt khi nào dùng EBS so với S3. | 26/09/2025 | 26/09/2025 | |
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### 🧠 Kiến thức mở rộng: Instance Store vs EBS
+Tôi phát hiện ra một số loại EC2 đi kèm với "Instance Store" (Lưu trữ tạm thời). Ổ cứng này gắn trực tiếp vật lý vào máy chủ nên tốc độ rất nhanh. **Tuy nhiên**, nếu tôi Stop hoặc Terminate máy ảo, **mọi dữ liệu trên Instance Store sẽ mất sạch**. Đó là lý do tại sao với Database cho dự án sắp tới, tôi bắt buộc phải dùng **EBS** vì dữ liệu trên EBS tồn tại độc lập với vòng đời của EC2.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Kết quả đạt được tuần 3:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+### Thành tựu đạt được:
+* Đã khởi chạy web server sử dụng kỹ thuật User Data bootstrapping (tự động cài Apache).
+* Quản lý lưu trữ bền vững với EBS volume và thực hành khôi phục dữ liệu từ Snapshot.
+* Hiểu rõ sự khác biệt giữa lưu trữ dạng Block (EBS) và dạng Object (S3).

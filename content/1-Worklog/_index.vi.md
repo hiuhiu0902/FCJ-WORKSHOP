@@ -6,32 +6,39 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
+**Tại trang này**, tôi xin giới thiệu nhật ký công việc (worklog) của mình.
 
-**Trong trang này** bạn sẽ cần giới thiệu worklog của bạn **như thế nào**? Bạn hoàn thành chương trình trong vòng **bao nhiêu tuần**? Bạn **đã làm gì** trong các tuần đó?
+**Tôi đã hoàn thành nó như thế nào?**
+Tôi đã thực hiện nghiêm túc lộ trình "First Cloud Journey", kết hợp giữa việc nghiên cứu lý thuyết trên AWS Documentation, xem video hướng dẫn và thực hành **hands-on** chuyên sâu trên AWS Console, CLI và phát triển backend bằng **Java Spring Boot**. Với mỗi nhiệm vụ, tôi đều ghi lại các bước thực hiện, những lỗi gặp phải và giải pháp khắc phục.
 
+**Chương trình kéo dài bao lâu?**
+Chương trình thực tập này được tôi hoàn thành trong vòng **12 tuần** (3 tháng), bắt đầu từ tháng 9/2025 và kết thúc vào tháng 12/2025.
 
-Thông thường và cũng là tiêu chuẩn, một worklog được thực hiện trong khoảng 3 tháng (trong suốt thời gian thực tập) với nội dung các tuần như sau:
+**Tôi đã làm những gì trong những tuần đó?**
+Trong suốt 12 tuần, tôi đã đi từ những khái niệm cơ bản nhất (như IAM, Bảo mật tài khoản) đến việc thiết kế và triển khai một kiến trúc High Availability (HA) hoàn chỉnh cho **Nền tảng Bán Thẻ Game**, tích hợp một backend mạnh mẽ với khả năng tự phục hồi và phân phối nội dung toàn cầu.
 
-**Tuần 1:** [Làm quen với AWS và các dịch vụ cơ bản trong AWS](1.1-week1/)
+Dưới đây là tóm tắt tiến độ từng tuần của tôi:
 
-**Tuần 2:** [Làm công việc A...](1.2-week2/)
+**Week 1:** [Làm quen với AWS và các nguyên lý IAM cơ bản](1.1-week1/)
 
-**Tuần 3:** [Làm công việc B...](1.3-week3/)
+**Week 2:** [Chuyên sâu về Networking (VPC, Subnets, Tường lửa Stateful vs Stateless)](1.2-week2/)
 
-**Tuần 4:** [Làm công việc C...](1.4-week4/)
+**Week 3:** [Dịch vụ Tính toán (EC2) và Lưu trữ (S3, EBS, Instance Store)](1.3-week3/)
 
-**Tuần 5:** [Làm công việc D...](1.5-week5/)
+**Week 4:** [Bài tập lớn Tháng 1: Tự xây dựng Mạng & Bastion Host](1.4-week4/)
 
-**Tuần 6:** [Làm công việc E...](1.6-week6/)
+**Week 5:** [Kiến trúc Sẵn sàng cao (ALB, ASG & Connection Draining)](1.5-week5/)
 
-**Tuần 7:** [Làm công việc G...](1.7-week7/)
+**Week 6:** [Lớp dữ liệu: Cơ sở dữ liệu quản lý (RDS Multi-AZ) & Caching](1.6-week6/)
 
-**Tuần 8:** [Làm công việc H...](1.8-week8/)
+**Week 7:** [Kết nối và Bảo mật (NAT Gateway, WAF, Secrets Manager)](1.7-week7/)
 
-**Tuần 9:** [Làm công việc I...](1.9-week9/)
+**Week 8:** [Giai đoạn Thiết kế: Vẽ sơ đồ kiến trúc & Giảm thiểu phạm vi ảnh hưởng](1.8-week8/)
 
-**Tuần 10:** [Làm công việc L...](1.10-week10/)
+**Week 9:** [Triển khai: Hạ tầng & Thiết lập Backend Spring Boot](1.9-week9/)
 
-**Tuần 11:** [Làm công việc M...](1.11-week11/)
+**Week 10:** [Triển khai: Logic ứng dụng, Giao dịch (Transactions) & Auto Scaling](1.10-week10/)
 
-**Tuần 12:** [Làm công việc N...](1.12-week12/)
+**Week 11:** [Bảo mật & Xác thực: Spring Security (JWT), CloudFront & WAF](1.11-week11/)
+
+**Week 12:** [Kiểm thử: Chaos Engineering & Kiểm chứng giao dịch ACID](1.12-week12/)
