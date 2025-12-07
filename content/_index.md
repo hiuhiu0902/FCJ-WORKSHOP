@@ -27,8 +27,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
 
-![Your profile picture](/images/OSK.jpg)
-
+<img src="/images/hinh.jpg" alt="Your image shortcut" width="500px" height = "800px"/>
 ### Report Content
 
 1.  [Worklog](1-Worklog/)

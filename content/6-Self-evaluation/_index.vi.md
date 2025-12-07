@@ -17,16 +17,16 @@ Về thái độ làm việc, tôi luôn nỗ lực hoàn thành tốt nhiệm v
 | STT | Tiêu chí | Mô tả | Tốt | Khá | TB |
 | --- | --- | --- | --- | --- | --- |
 | 1 | **Kiến thức & Kỹ năng chuyên môn** | Hiểu về AWS, Spring Boot và áp dụng để xây dựng dự án Bán Thẻ Game. | ✅ | ☐ | ☐ |
-| 2 | **Khả năng học hỏi** | Khả năng tiếp thu nhanh các công nghệ mới như Chaos Engineering, JWT Auth, Multi-AZ. | ✅ | ☐ | ☐ |
-| 3 | **Tính chủ động** | Chủ động tìm kiếm giải pháp (ví dụ: Secrets Manager, WAF) mà không đợi nhắc nhở. | ✅ | ☐ | ☐ |
-| 4 | **Tinh thần trách nhiệm** | Hoàn thành worklog hàng tuần đúng hạn và đảm bảo dự án chạy ổn định. | ✅ | ☐ | ☐ |
-| 5 | **Tính kỷ luật** | Tuân thủ lộ trình 12 tuần và ghi chép tiến độ hàng ngày. | ✅ | ☐ | ☐ |
-| 6 | **Tư duy cầu tiến** | Sẵn sàng đón nhận phản hồi về chất lượng code và các lỗ hổng bảo mật. | ✅ | ☐ | ☐ |
+| 2 | **Khả năng học hỏi** | Khả năng tiếp thu nhanh các công nghệ mới như Chaos Engineering, JWT Auth, Multi-AZ. | ☐ | ✅ | ☐ |
+| 3 | **Tính chủ động** | Chủ động tìm kiếm giải pháp (ví dụ: Secrets Manager, WAF) mà không đợi nhắc nhở. | ☐ | ✅ | ☐ |
+| 4 | **Tinh thần trách nhiệm** | Hoàn thành worklog hàng tuần đúng hạn và đảm bảo dự án chạy ổn định. | ☐ | ✅ | ☐ |
+| 5 | **Tính kỷ luật** | Tuân thủ lộ trình 12 tuần và ghi chép tiến độ hàng ngày. | ☐ | ☐ | ✅ |
+| 6 | **Tư duy cầu tiến** | Sẵn sàng đón nhận phản hồi về chất lượng code và các lỗ hổng bảo mật. | ☐ | ✅ | ☐ |
 | 7 | **Giao tiếp** | Trình bày ý tưởng kỹ thuật và báo cáo công việc rõ ràng trong worklog. | ☐ | ✅ | ☐ |
 | 8 | **Làm việc nhóm** | Tương tác với cộng đồng và mentor trong các sự kiện và workshop. | ✅ | ☐ | ☐ |
-| 9 | **Tác phong chuyên nghiệp** | Tôn trọng môi trường học tập và ý thức về tài nguyên đám mây (Tối ưu chi phí). | ✅ | ☐ | ☐ |
+| 9 | **Tác phong chuyên nghiệp** | Tôn trọng môi trường học tập và ý thức về tài nguyên đám mây (Tối ưu chi phí). | ☐ | ☐ | ✅ |
 | 10 | **Kỹ năng giải quyết vấn đề** | Nhận diện vấn đề (ví dụ: Race Condition) và giải quyết bằng Transaction Locking. | ✅ | ☐ | ☐ |
-| 11 | **Đóng góp cho dự án** | Triển khai thành công sản phẩm MVP đạt chuẩn HA và Bảo mật. | ✅ | ☐ | ☐ |
+| 11 | **Đóng góp cho dự án** | Triển khai thành công sản phẩm MVP đạt chuẩn HA và Bảo mật. | ☐ | ✅ | ☐ |
 | 12 | **Tổng quan** | Đánh giá chung về toàn bộ kỳ thực tập. | ✅ | ☐ | ☐ |
 
 ### Điểm cần cải thiện

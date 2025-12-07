@@ -17,16 +17,16 @@ To objectively reflect on my internship period, I would like to evaluate myself 
 | No. | Criteria | Description | Good | Fair | Average |
 | --- | --- | --- | --- | --- | --- |
 | 1 | **Professional knowledge & skills** | Understanding of AWS services, Spring Boot, and applying them to build the Game Card Platform. | ✅ | ☐ | ☐ |
-| 2 | **Ability to learn** | Absorbed new concepts like Chaos Engineering, JWT Auth, and Multi-AZ architecture quickly. | ✅ | ☐ | ☐ |
-| 3 | **Proactiveness** | Taking initiative in researching solutions (e.g., Secrets Manager, WAF) without waiting for instructions. | ✅ | ☐ | ☐ |
-| 4 | **Sense of responsibility** | Completed weekly worklogs on time and ensured the project ran successfully. | ✅ | ☐ | ☐ |
-| 5 | **Discipline** | Adhering to the 12-week roadmap and documenting progress daily. | ✅ | ☐ | ☐ |
-| 6 | **Progressive mindset** | Willingness to receive feedback on code quality and security practices. | ✅ | ☐ | ☐ |
+| 2 | **Ability to learn** | Absorbed new concepts like Chaos Engineering, JWT Auth, and Multi-AZ architecture quickly. |  ☐ | ✅ | ☐ |
+| 3 | **Proactiveness** | Taking initiative in researching solutions (e.g., Secrets Manager, WAF) without waiting for instructions. |  ☐ | ✅ | ☐ |
+| 4 | **Sense of responsibility** | Completed weekly worklogs on time and ensured the project ran successfully. |  ☐ | ✅ | ☐ |
+| 5 | **Discipline** | Adhering to the 12-week roadmap and documenting progress daily. |  ☐ | ☐ | ✅ |
+| 6 | **Progressive mindset** | Willingness to receive feedback on code quality and security practices. |  ☐ | ✅ | ☐ |
 | 7 | **Communication** | Presenting technical ideas and reporting work clearly in the worklogs. | ☐ | ✅ | ☐ |
 | 8 | **Teamwork** | Engaging with the community and mentors during events and workshops. | ✅ | ☐ | ☐ |
-| 9 | **Professional conduct** | Respecting the learning environment and cloud resources (Cost optimization). | ✅ | ☐ | ☐ |
+| 9 | **Professional conduct** | Respecting the learning environment and cloud resources (Cost optimization). |  ☐ | ☐ | ✅ |
 | 10 | **Problem-solving skills** | Identifying issues (e.g., Race Conditions) and solving them with Transactional locking. | ✅ | ☐ | ☐ |
-| 11 | **Contribution to project/team** | Successfully deployed a working MVP with HA and Security standards. | ✅ | ☐ | ☐ |
+| 11 | **Contribution to project/team** | Successfully deployed a working MVP with HA and Security standards. |  ☐ | ✅ | ☐ |
 | 12 | **Overall** | General evaluation of the entire internship period. | ✅ | ☐ | ☐ |
 
 ### Areas for Improvement

@@ -25,8 +25,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
 
-![Ảnh đại diện của bạn](/images/avatar.png)
-
+<img src="/images/hinh.jpg" alt="Your image shortcut" width="500px" height = "800px"/>
 
 
 ### Nội dung báo cáo

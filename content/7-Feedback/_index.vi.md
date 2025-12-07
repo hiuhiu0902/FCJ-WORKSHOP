@@ -1,44 +1,53 @@
 ---
-title: "Chia sẻ, đóng góp ý kiến"
+title: "Chia sẻ và Đóng góp ý kiến"
 date: "2025-09-09T19:53:52+07:00"
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud Journey, giúp team FCJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
+> Tại đây, bạn có thể tự do chia sẻ ý kiến cá nhân về trải nghiệm tham gia chương trình First Cloud Journey. Điều này sẽ giúp team FCJ cải thiện những thiếu sót dựa trên các khía cạnh sau:
 
 ### Đánh giá chung
 
-**1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+**1. Môi trường làm việc**
+Môi trường làm việc tại FCJ rất chuyên nghiệp và đề cao tính tự giác. Là sinh viên FPT, mình đánh giá cao không gian làm việc hiện đại và cơ hội tiếp cận tài nguyên AWS. Không khí làm việc cởi mở nhưng đòi hỏi thực tập sinh phải rất chủ động.
 
-**2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+**2. Sự hỗ trợ từ Mentor / Team Admin**
+Phong cách hướng dẫn ở đây tập trung nhiều vào khả năng tự học. Mentor chủ yếu chỉ **xem xét (review) kiến trúc mạng** cho dự án cuối kỳ chứ không can thiệp sâu hay cầm tay chỉ việc. Mentor thường không đưa ra nhiều ý kiến đóng góp chủ động, mà chỉ giải đáp khi mình có thắc mắc cụ thể. Tuy nhiên, khi mình chủ động đặt câu hỏi về các dịch vụ AWS, mentor vẫn hỗ trợ giải thích rõ ràng.
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+**3. Mức độ phù hợp với chuyên ngành**
+Kỳ OJT này rất sát với chuyên ngành Kỹ thuật phần mềm của mình. Mình đã áp dụng được kiến thức lập trình Web và Mạng máy tính để xây dựng **Web bán thẻ game (Game Card Selling Web)**. Việc chuyển từ viết code sang thiết kế hạ tầng cloud hoàn chỉnh (VPC, Subnets, EC2) là trải nghiệm thực tế quý giá mà lý thuyết ở trường chưa bao quát hết.
 
-**4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+**4. Cơ hội học tập và phát triển kỹ năng**
+Chính vì mentor chỉ hỗ trợ khi được hỏi, mình đã rèn luyện được **kỹ năng tự nghiên cứu và giải quyết vấn đề**. Mình học được cách đọc tài liệu AWS chuyên sâu để cấu hình VPC và RDS cho dự án. Mình cũng hiểu rõ hơn về cách thiết kế một kiến trúc mạng chuẩn chỉnh.
 
-**5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
+**5. Văn hóa công ty và tinh thần đồng đội**
+Văn hóa công ty đề cao tính độc lập và tinh thần "Ownership". Mọi người đều tập trung vào nhiệm vụ của mình. Tuy không quá sôi nổi, nhưng mọi người tôn trọng lẫn nhau. Đội ngũ Admin hỗ trợ rất nhanh chóng các vấn đề về tài khoản và credits để mình thực hành.
 
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+**6. Chính sách / Quyền lợi thực tập**
+Chương trình cung cấp quyền lợi tốt, đặc biệt là quyền truy cập vào kho tài liệu học tập của AWS và trợ cấp thực tập. Thời gian làm việc linh hoạt giúp mình cân đối tốt giữa việc làm dự án và các yêu cầu khác của trường.
 
+---
 
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+### Câu hỏi bổ sung
+- **Điều gì làm bạn hài lòng nhất trong kỳ thực tập?**
+Điều hài lòng nhất là khi trang web **Bán thẻ game** của mình chạy ổn định trên kiến trúc do chính mình tự thiết kế. Vì không được hướng dẫn quá chi tiết từng bước, nên khi cấu hình thành công VPC và Security Groups, mình cảm thấy rất tự hào về thành quả của bản thân.
 
+- **Bạn nghĩ công ty nên cải thiện điều gì cho các thực tập sinh tương lai?**
+Mình nghĩ mentor nên chủ động đưa ra feedback (phản hồi) nhiều hơn trong giai đoạn đầu thiết kế, thay vì chỉ đợi thực tập sinh hỏi mới trả lời. Đôi khi thực tập sinh chưa đủ kiến thức để biết mình đang sai ở đâu, nên cần thêm các buổi review định kỳ.
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+- **Nếu giới thiệu cho bạn bè, bạn có khuyên họ thực tập ở đây không? Tại sao?**
+Có, đặc biệt là với những bạn có khả năng tự học tốt. Đây là nơi tuyệt vời để ép bản thân phải hiểu sâu về AWS, nhưng các bạn không nên mong đợi sẽ được dạy từng chút một.
+
+---
+
+### Đề xuất & Mong muốn
+- **Bạn có đề xuất gì để cải thiện trải nghiệm thực tập không?**
+Sẽ rất tốt nếu có thêm các buổi chia sẻ kỹ thuật nơi mentor phân tích các mẫu kiến trúc mạng (architecture patterns), giúp tụi mình tránh các lỗi sai phổ biến trước khi bắt tay vào làm.
+
+- **Bạn có muốn tiếp tục chương trình này trong tương lai không?**
+Có, mình muốn tiếp tục để chinh phục các chứng chỉ và dịch vụ nâng cao hơn của AWS.
+
+- **Ý kiến khác (chia sẻ tự do):**
+Cảm ơn team FCJ đã tạo cơ hội để mình thử thách bản thân và xây dựng một dự án cloud thực tế.
