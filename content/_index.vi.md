@@ -7,13 +7,13 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Văn A
+&emsp; **Họ và tên:** Đỗ Trung Hiếu
 
-&emsp; **Số điện thoại:** 0989888999
+&emsp; **Số điện thoại:** 0382042726
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** hieudtse181734@fpt.edu.cn
 
-&emsp; **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM
+&emsp; **Trường:** Đại học FPT
 
 &emsp; **Ngành:** Công nghệ thông tin
 
@@ -23,7 +23,7 @@ chapter: false
 
 &emsp; **Vị trí thực tập:** FCJ Cloud Intern
 
-&emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
+&emsp; **Thời gian thực tập:** Từ ngày 27/08/2025 đến ngày 12/12/2025
 
 <img src="/images/hinh.jpg" alt="Your image shortcut" width="500px" height = "800px"/>
 

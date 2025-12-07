@@ -13,7 +13,7 @@ chapter: false
 
 &emsp; **Phone Number:** 0382042726 
 
-&emsp; **Email:** dotrunghieund9.9@gmail.com
+&emsp; **Email:** hieudtse181734@fpt.edu.vn
 
 &emsp; **University:** Ho Chi Minh City University of Technology and Education
 
@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Internship Position:** FCJ Cloud Intern
 
-&emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
+&emsp; **Internship Duration:** From 12/08/2025 to 12/12/2025
 
 <img src="/images/hinh.jpg" alt="Your image shortcut" width="500px" height = "800px"/>
 
