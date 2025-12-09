@@ -15,7 +15,7 @@ chapter: false
 
 &emsp; **Email:** hieudtse181734@fpt.edu.vn
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **University:** FPT University HCM
 
 &emsp; **Major:** Information Technology
 
