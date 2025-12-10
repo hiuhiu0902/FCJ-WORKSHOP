@@ -6,23 +6,25 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Deploying Highly Available N-Tier Architecture
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+**N-Tier Architecture** is a common pattern for building enterprise applications that are scalable, secure, and highly available on AWS.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+In this lab, you will learn how to deploy a complete web system consisting of a separate Frontend and Backend, utilizing core services such as VPC, EC2, RDS, and Application Load Balancers.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+You will build a system with 3 distinct tiers, where each tier performs a specific role and is protected by strict network security layers:
++ **Presentation Tier (Public)** - Contains the Public Load Balancer and Frontend Auto Scaling Group. This tier receives traffic from Internet users via HTTP/HTTPS.
++ **Logic Tier (Private)** - Contains the Internal Load Balancer and Backend Auto Scaling Group. This tier processes business logic and only accepts connections from the Presentation Tier.
++ **Data Tier (Private)** - Contains the Amazon RDS Multi-AZ database. This tier stores persistent data, is the most heavily secured, and cannot be accessed directly from the Internet.
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Introduction & Architecture](5.1-Workshop-overview/)
+2. [Prerequisites](5.2-Prerequiste/)
+3. [Network Setup (VPC)](5.3-Network-Setup/)
+4. [Security Configuration](5.4-Security-Config/)
+5. [Compute Setup](5.5-Compute-Setup/)
+6. [Database Setup (RDS)](5.6-Database-Setup/)
+7. [Load Balancer Configuration](5.7-LoadBalancer-Setup/)

@@ -1,18 +1,26 @@
 ---
-title : "Introduction"
-date :  "2025-09-09T19:53:52+07:00" 
-weight : 1 
+title : "Architecture Overview"
+date : "2025-09-10T10:00:00+07:00"
+weight : 1
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks.
-+ Compute resources running in VPC can access  **Amazon S3**  using a Gateway endpoint. PrivateLink interface endpoints can be used by compute resources running in VPC or on-premises.
+#### Overview
+In this workshop, we will deploy an **N-Tier Microservices** architecture (with separate Frontend and Backend) designed for **High Availability**. The system includes:
 
-#### Workshop overview
-In this workshop, you will use two VPCs. 
-+ **"VPC Cloud"** is for cloud resources such as a  **Gateway endpoint** and an EC2 instance to test with. 
-+ **"VPC On-Prem"** simulates an on-premises environment such as a factory or corporate datacenter. An EC2 instance running strongSwan VPN software has been deployed in "VPC On-prem" and automatically configured to establish a Site-to-Site VPN tunnel with AWS Transit Gateway. This VPN simulates connectivity from an on-premises location to the AWS cloud. To minimize costs, only one VPN instance is provisioned to support this workshop. When planning VPN connectivity for your production workloads, AWS recommends using multiple VPN devices for high availability.
+1.  **Public Tier:** Contains the Public Load Balancer that receives traffic from the Internet.
+2.  **Frontend Tier (Web):** Contains Web Servers that interact with users.
+3.  **Backend Tier (App):** Contains App Servers that process business logic, receiving requests via an **Internal Load Balancer**.
+4.  **Database Tier:** Contains RDS Multi-AZ located in the most secure private network zone.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+#### Architecture Diagram
+Below is the detailed architecture diagram we will build:
+
+![Detailed Architecture Diagram](/images/5-Workshop/5.1-Workshop-overview/architecture-diagram.png)
+
+#### Implementation Steps
+1.  **Network:** Design a VPC with 4 network layers (Public, Web, App, DB).
+2.  **Database:** Initialize RDS Multi-AZ (Primary & Standby).
+3.  **Backend Compute:** Configure Internal ALB and Auto Scaling for the Backend.
+4.  **Frontend Compute:** Configure Public ALB and Auto Scaling for the Frontend.
