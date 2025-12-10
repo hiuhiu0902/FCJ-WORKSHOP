@@ -23,4 +23,4 @@ This chapter is divided into 2 labs:
 1.  [**Create VPC & Subnets:**](/en/5-workshop/5.3-network-setup/5.3.1-vpc-subnets/) creating the skeleton of the network.
 2.  [**NAT & Routing Config:**](/en/5-workshop/5.3-network-setup/5.3.2-nat-routing/) connecting the veins to allow traffic flow.
 
-![VPC Diagram](/images/5-Workshop/5.3-Network-Setup/vpc-diagram.png)
+![](/images/5-Workshop/5.3-Network-Setup/architecture-diagram.png)

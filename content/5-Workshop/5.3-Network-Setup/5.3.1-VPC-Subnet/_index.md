@@ -13,7 +13,7 @@ The first step is to create a Virtual Private Cloud (VPC) to house all project r
 2.  In the left navigation pane, choose **Your VPCs**.
 3.  Click **Create VPC**.
 
-![create vpc button](/images/5-Workshop/5.3-Network-Setup/5.3.1/create-vpc-button.png)
+![create vpc button](/images/5-Workshop/5.3-Network-Setup/create-vpc-button.png)
 
 4.  On the **Create VPC** screen, configure the following:
     * **Resources to create:** Select **VPC only** (We will create subnets manually to understand the structure).
@@ -22,7 +22,7 @@ The first step is to create a Virtual Private Cloud (VPC) to house all project r
     * **Tenancy:** Default.
     * Click **Create VPC**.
 
-![vpc config](/images/5-Workshop/5.3-Network-Setup/5.3.1/vpc-config.png)
+![vpc config](/images/5-Workshop/5.3-Network-Setup/vpc-config.png)
 
 5.  After creation, select **Actions** -> **Edit VPC settings**.
 6.  Check **Enable DNS hostnames** (Allows AWS resources to have DNS names).

@@ -13,7 +13,7 @@ Bước đầu tiên, chúng ta sẽ tạo một mạng riêng ảo (VPC) để 
 2.  Ở thanh điều hướng bên trái, chọn **Your VPCs**.
 3.  Click **Create VPC**.
 
-![create vpc button](/images/5-Workshop/5.3-Network-Setup/5.3.1/create-vpc-button.png)
+![create vpc button](/images/5-Workshop/5.3-Network-Setup/create-vpc-button.png)
 
 4.  Trong màn hình **Create VPC**, điền các thông số:
     * **Resources to create:** Chọn **VPC only** (Chúng ta sẽ tạo subnet thủ công để hiểu rõ cấu trúc).
@@ -22,7 +22,7 @@ Bước đầu tiên, chúng ta sẽ tạo một mạng riêng ảo (VPC) để 
     * **Tenancy:** Default.
     * Click **Create VPC**.
 
-![vpc config](/images/5-Workshop/5.3-Network-Setup/5.3.1/vpc-config.png)
+![vpc config](/images/5-Workshop/5.3-Network-Setup/vpc-config.png)
 
 5.  Sau khi tạo xong, chọn **Actions** -> **Edit VPC settings**.
 6.  Tích chọn **Enable DNS hostnames** (Để các server có thể phân giải tên miền AWS).
